@@ -1,6 +1,7 @@
 -- Criação do banco de dados para o cenário do E-commerce
 
 create database ecommerce;
+
 use ecommerce;
 
 -- criar tabela cliente
