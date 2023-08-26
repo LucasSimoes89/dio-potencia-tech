@@ -36,7 +36,9 @@ CREATE TABLE Produto (
     Valor FLOAT NOT NULL,
     EmEstoque ENUM("True", "False") DEFAULT "True",
     idFornecedor int NOT NULL,
+	idVendedor INT,
     CONSTRAINT fk_fornecedor FOREIGN KEY (idFornecedor) REFERENCES Fornecedor(IdFornecedor) ON UPDATE CASCADE,
+	CONSTRAINT fk_produto_vendedor FOREIGN KEY (idVendedor) REFERENCES Vendedor(idVendedor) ON UPDATE CASCADE,
     CONSTRAINT chk_valor CHECK (Valor > 0)
 );
 
@@ -95,9 +97,7 @@ CREATE TABLE Pedido (
     Valor FLOAT NOT NULL,
     Frete FLOAT NOT NULL,
     idCliente INT,
-    idVendedor INT,
     CONSTRAINT fk_pedido_cliente FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente) ON UPDATE CASCADE,
-    CONSTRAINT fk_pedido_vendedor FOREIGN KEY (idVendedor) REFERENCES Vendedor(idVendedor) ON UPDATE CASCADE,
     CONSTRAINT chk_pedido_valor CHECK(Valor > 0),
     CONSTRAINT chk_pedido_frete CHECK(Frete >= 0),
     CONSTRAINT chk_pedido_dataAtualizado CHECK(DataAtualizado >= DataCriado)

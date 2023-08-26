@@ -31,12 +31,9 @@ CREATE TABLE `pedido` (
   `Valor` float NOT NULL,
   `Frete` float NOT NULL,
   `idCliente` int DEFAULT NULL,
-  `idVendedor` int DEFAULT NULL,
   PRIMARY KEY (`idPedido`),
   KEY `fk_pedido_cliente` (`idCliente`),
-  KEY `fk_pedido_vendedor` (`idVendedor`),
   CONSTRAINT `fk_pedido_cliente` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`) ON UPDATE CASCADE,
-  CONSTRAINT `fk_pedido_vendedor` FOREIGN KEY (`idVendedor`) REFERENCES `vendedor` (`idVendedor`) ON UPDATE CASCADE,
   CONSTRAINT `chk_pedido_dataAtualizado` CHECK ((`DataAtualizado` >= `DataCriado`)),
   CONSTRAINT `chk_pedido_frete` CHECK ((`Frete` >= 0)),
   CONSTRAINT `chk_pedido_valor` CHECK ((`Valor` > 0))
@@ -49,7 +46,7 @@ CREATE TABLE `pedido` (
 
 LOCK TABLES `pedido` WRITE;
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
-INSERT INTO `pedido` VALUES (1,'2023-01-02 00:00:00','2023-01-02 00:00:00','Cancelado','Pedido peças de bicicleta',3300,0,1,1),(2,'2023-02-02 00:00:00','2023-02-05 00:00:00','Processando','Pedido peças de bicicleta',300,12.5,5,1),(3,'2023-02-10 00:00:00','2023-02-10 00:00:00','Processando','Pedido peças de carro',430,0,4,2),(4,'2023-03-15 00:00:00','2023-03-15 00:00:00','Enviado','Pedido loja de louças',199,13,12,4),(5,'2023-03-23 00:00:00','2023-03-26 00:00:00','Enviado','Pedido loja de louças',599,0,12,4),(6,'2023-05-02 00:00:00','2023-05-02 00:00:00','Concluído','Pedido loja de roupas',229.98,0,6,5),(7,'2023-06-03 00:00:00','2023-06-03 00:00:00','Concluído','Pedido loja de roupas',39.99,8,13,5),(8,'2023-06-07 00:00:00','2023-06-07 00:00:00','Concluído','Pedido loja de roupas',89.99,9,13,5);
+INSERT INTO `pedido` VALUES (1,'2023-01-02 00:00:00','2023-01-02 00:00:00','Cancelado','Pedido peças de bicicleta',3300,0,1),(2,'2023-02-02 00:00:00','2023-02-05 00:00:00','Processando','Pedido peças de bicicleta',300,12.5,5),(3,'2023-02-10 00:00:00','2023-02-10 00:00:00','Processando','Pedido peças de carro',430,0,4),(4,'2023-03-15 00:00:00','2023-03-15 00:00:00','Enviado','Pedido loja de louças',199,13,12),(5,'2023-03-23 00:00:00','2023-03-26 00:00:00','Enviado','Pedido loja de louças',599,0,12),(6,'2023-05-02 00:00:00','2023-05-02 00:00:00','Concluído','Pedido loja de roupas',229.98,0,6),(7,'2023-06-03 00:00:00','2023-06-03 00:00:00','Concluído','Pedido loja de roupas',39.99,8,13),(8,'2023-06-07 00:00:00','2023-06-07 00:00:00','Concluído','Pedido loja de roupas',89.99,9,13);
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -62,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-26 10:17:31
+-- Dump completed on 2023-08-26 10:37:09
